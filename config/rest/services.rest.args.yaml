@@ -1,0 +1,60 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  rest_min_count_symbols_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinCountSymbolsOptionArgs
+
+  rest_min_count_page_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinCountPageOptionArgs
+
+  rest_min_price_symbols_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinPriceSymbolsOptionsArgs
+
+  rest_min_price_page_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinPricePageOptionsArgs
+
+  rest_min_count_days_deadline_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinCountDaysDeadlineOptionArgs
+
+  rest_single_spaced_coefficient_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\SingleSpacedCoefficientArgs
+
+  rest_variation_deadline_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\VariationDeadlineArgs
+
+
+  rest_product_type_create_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\ProductType\ProductTypeCreateArgs
+
+  rest_product_type_get_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\ProductType\ProductTypeGetArgs
+
+
+  rest_product_category_create_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Category\ProductCategoryCreateArgs
+
+  rest_product_category_get_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Category\ProductCategoryGetArgs
+
+
+  rest_product_create_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Product\ProductCreateArgs
+
+  rest_product_get_args:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Product\ProductGetArgs

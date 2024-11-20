@@ -1,0 +1,45 @@
+.widget__essay {
+  &.widget__essay__input {
+    label {
+      font: normal 600 14px/22px "Helvetica", sans-serif;
+      color: #333;
+    }
+  }
+
+  component-essay-text-option {
+    display: flex;
+    flex-flow: wrap row;
+    gap: 10px;
+
+    input {
+      height: 50px;
+      flex: 1 1 auto;
+      border: 1px solid #eaeaea;
+      border-radius: 7px;
+      padding: 0 15px;
+      font-weight: 400;
+
+      &:focus {
+        border: 1px solid #878787;
+      }
+    }
+
+    button {
+      border-radius: 7px;
+      padding: 0 15px;
+      width: 100px;
+      height: 50px;
+      font: normal 400 14px/22px "Helvetica", sans-serif;
+      border: none !important;
+      background-color: #0a7aff;
+      font-weight: 400;
+      cursor: pointer;
+      color: #fff;
+
+      &:disabled {
+        background-color: #eaeaea;
+        color: #333;
+      }
+    }
+  }
+}

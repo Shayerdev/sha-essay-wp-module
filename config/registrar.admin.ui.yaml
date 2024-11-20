@@ -1,0 +1,123 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  widget_min_count_symbols_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetInputText\WidgetInputTextProvider
+    arguments:
+      $name: 'min_count_symbols_option'
+      $label: 'Minimal Count Words'
+      $extractValueService: '@service_min_count_symbols'
+      $pathEndpoint: 'calcOptions/minCountSymbolsOption'
+
+  widget_min_count_pages_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetInputText\WidgetInputTextProvider
+    arguments:
+      $name: 'min_count_pages_option'
+      $label: 'Minimal Count Pages'
+      $extractValueService: '@service_min_count_page'
+      $pathEndpoint: 'calcOptions/minCountPageOption'
+
+  widget_min_count_days_deadline_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetInputText\WidgetInputTextProvider
+    arguments:
+      $name: 'min_count_deadline_days_option'
+      $label: 'Minimal Days of Deadline'
+      $extractValueService: '@service_min_count_days_deadline'
+      $pathEndpoint: 'calcOptions/minCountDaysDeadlineOption'
+
+  widget_value_single_spaced_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetInputText\WidgetInputTextProvider
+    arguments:
+      $name: 'min_coefficient_single_spaced_option'
+      $label: 'Single Spaced Coefficient'
+      $extractValueService: '@service_single_spaced_coefficient'
+      $pathEndpoint: 'calcOptions/singleSpacedCoefficientOption'
+
+  widget_value_min_price_symbols_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetRepeaterInput\WidgetRepeaterInputProvider
+    arguments:
+      $name: 'min_price_symbols_option'
+      $label: 'Set Minimum Price Symbols'
+      $extractValueService: '@service_min_price_symbols'
+      $pathEndpoint: 'calcOptions/minPriceSymbolsOption'
+      $columns: ['currency', 'value']
+
+  widget_value_min_price_page_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetRepeaterInput\WidgetRepeaterInputProvider
+    arguments:
+      $name: 'min_price_page_option'
+      $label: 'Set Minimum Price Page'
+      $extractValueService: '@service_min_price_page'
+      $pathEndpoint: 'calcOptions/minPricePageOption'
+      $columns: ['currency', 'value']
+
+  widget_variation_deadline_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetRepeaterInput\WidgetRepeaterInputProvider
+    arguments:
+      $name: 'variation_deadline'
+      $label: 'Set Variation Deadline'
+      $extractValueService: '@variation_deadline_service'
+      $pathEndpoint: 'calcOptions/variationDeadline'
+      $columns: ['count_symbols', 'count_days']
+
+  widget_product_type_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetRepeaterProductType\WidgetRepeaterProductTypeProvider
+    arguments:
+      $name: 'variation_deadline'
+      $label: 'Set Product Types'
+      $extractValueService: '@product_type_service'
+      $pathEndpoint: 'calcOptions/productType'
+      $columns:
+        - 'name_type'
+        - 'coefficient'
+        - 'min_count_symbols'
+        - 'min_count_pages'
+        - 'apply_coefficient_if_below_min'
+
+  widget_product_category_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetRepeaterProductCategory\WidgetRepeaterProductCatProvider
+    arguments:
+      $name: 'product_categories'
+      $label: 'Set Product Categories'
+      $extractValueService: '@product_category_service'
+      $pathEndpoint: 'category/productCategory'
+      $columns:
+        - 'category_name'
+
+  widget_products_provider:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Ui\WidgetRepeaterProducts\WidgetRepeaterProductsProvider
+    arguments:
+      $name: 'products'
+      $label: 'Products list'
+      $extractValueService: '@product_service'
+      $pathEndpoint: 'product'
+      $columns:
+        id:
+          type: textHidden
+          field: id
+        active:
+          type: checkbox
+          field: product_active
+          default: true
+        name:
+          type: text
+          field: product_name
+        product_type:
+          type: select
+          field: product_type_id
+        product_category:
+          type: select
+          field: product_category_id

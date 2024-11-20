@@ -1,0 +1,132 @@
+parameters:
+  shayer_edu_essay.plugin_file_path: ''
+  shayer_edu_essay.plugin_dir_path: ''
+
+imports:
+  - { resource: registrar.hook.subscribers.yaml }
+  - { resource: registrar.controller.rest.yaml }
+  - { resource: registrar.admin.pages.yaml }
+  - { resource: registrar.admin.ui.yaml }
+  - { resource: registrar.enqueue.assets.yaml }
+  - { resource: registrar.localize.subscribers.yaml }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Shayer\EduEssayPlugin\Common\Field\Option: ~
+  Shayer\EduEssayPlugin\Common\Database\ConnectionInterface: '@Shayer\EduEssayPlugin\Common\Database\Connection\MySQL'
+  Shayer\EduEssayPlugin\Common\Database\Connection\MySQL: ~
+
+  # Hooks
+  Shayer\EduEssayPlugin\Common\Hooks\HookAdapter: ~
+  Shayer\EduEssayPlugin\Common\Hooks\HookManager:
+    autowire: true
+    arguments:
+      $adapter: '@Shayer\EduEssayPlugin\Common\Hooks\HookAdapter'
+
+  Shayer\EduEssayPlugin\Action\ActivateHook\TestOneAction: ~
+  Shayer\EduEssayPlugin\Action\DeactivateHook\TestOneAction: ~
+
+  activate_hook_table_variation_deadline_creator:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Action\ActivateHook\VariationDeadlineTableCreator
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  activate_hook_table_type_product_creator:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Action\ActivateHook\TypeProductTableCreator
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  activate_hook_table_product_category_creator:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Action\ActivateHook\ProductCategoryTableCreator
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  activate_hook_table_product_creator:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Action\ActivateHook\ProductTableCreator
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  action_activate_hook_registry:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Action\ActionRegistry
+    arguments:
+      $actionHook:
+        - '@activate_hook_table_variation_deadline_creator'
+        - '@activate_hook_table_type_product_creator'
+        - '@activate_hook_table_product_category_creator'
+        - '@activate_hook_table_product_creator'
+
+  action_deactivate_hook_registry:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Action\ActionRegistry
+    arguments:
+      $actionHook:
+        - '@Shayer\EduEssayPlugin\Action\DeactivateHook\TestOneAction'
+
+  Shayer\EduEssayPlugin\Action\ActivateActionRegistrar:
+    autowire: true
+    arguments:
+      $file: '%shayer_edu_essay.plugin_file_path%'
+      $actionRegistry: '@action_activate_hook_registry'
+
+  Shayer\EduEssayPlugin\Action\DeactivateActionRegistrar:
+    autowire: true
+    arguments:
+      $file: '%shayer_edu_essay.plugin_file_path%'
+      $actionRegistry: '@action_deactivate_hook_registry'
+
+  variation_deadline_repository:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\VariationDeadline\VariationDeadlineRepository
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  variation_deadline_service:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\VariationDeadline\VariationDeadlineService
+    arguments:
+      $variationDeadlineRepository: '@variation_deadline_repository'
+
+  product_type_repository:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\ProductType\ProductTypeRepository
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  product_type_service:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\ProductType\ProductTypeService
+    arguments:
+      $productTypeRepository: '@product_type_repository'
+
+  product_category_repository:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\ProductCategory\ProductCategoryRepository
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  product_category_service:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\ProductCategory\ProductCategoryService
+    arguments:
+      $productCategoryRepository: '@product_category_repository'
+
+  product_repository:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\Product\ProductRepository
+    arguments:
+      $connection: '@Shayer\EduEssayPlugin\Common\Database\ConnectionInterface'
+
+  product_service:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Service\Product\ProductService
+    arguments:
+      $productRepository: '@product_repository'

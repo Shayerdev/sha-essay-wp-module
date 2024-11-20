@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Shayer\EduEssayPlugin\Common\Localize\LocalizeAdapter: ~
+
+  list_localize_registrar:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Common\Localize\LocalizeRegistrar
+    arguments:
+      $localizeAdapter: '@Shayer\EduEssayPlugin\Common\Localize\LocalizeAdapter'
+      $localizeServiceList:
+        - '@product_type_service'
+        - '@product_category_service'

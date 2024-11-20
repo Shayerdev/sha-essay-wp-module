@@ -1,0 +1,34 @@
+@import "components/component.text.option";
+@import "components/component.alert.http";
+@import "components/component.repeater.option";
+
+.essay-page {
+  padding: 25px 15px;
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  &.essay-page-product-type {
+    .widget__essay {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.widget__essay {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 25px 30px 30px;
+  max-width: 800px;
+  display: flex;
+  flex-flow: wrap column;
+  gap: 15px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  font: normal 400 14px/22px "Helvetica", sans-serif;
+}

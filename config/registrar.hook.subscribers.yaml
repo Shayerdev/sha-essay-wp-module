@@ -1,0 +1,38 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Shayer\EduEssayPlugin\Common\Hooks\HookProvider:
+    autowire: true
+    arguments:
+      $actionSubscribers:
+        - '@Shayer\EduEssayPlugin\Common\Registrar\PageAdminRegistrar'
+        - '@Shayer\EduEssayPlugin\Common\Registrar\SubpageAdminRegistrar'
+        - '@rest_min_count_symbols_option'
+        - '@rest_min_count_page_option'
+        - '@rest_min_price_symbols_option'
+        - '@rest_min_price_page_option'
+        - '@rest_min_days_deadline_page_option'
+        - '@rest_single_spaced_coefficient_option'
+        - '@rest_variation_deadline'
+        - '@rest_product_type_create'
+        - '@rest_product_get_create'
+        - '@rest_product_category_create'
+        - '@rest_product_category_get'
+        - '@rest_product_create'
+        - '@rest_product_get'
+        - '@widget_min_count_symbols_provider'
+        - '@widget_value_min_price_symbols_provider'
+        - '@widget_min_count_pages_provider'
+        - '@widget_value_min_price_page_provider'
+        - '@widget_min_count_days_deadline_provider'
+        - '@widget_variation_deadline_provider'
+        - '@widget_value_single_spaced_provider'
+        - '@register_enqueue_scripts_main'
+        - '@register_enqueue_style_main'
+        - '@widget_product_type_provider'
+        - '@widget_product_category_provider'
+        - '@widget_products_provider'
+        - '@list_localize_registrar'

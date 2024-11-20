@@ -1,0 +1,28 @@
+parameters:
+  shayer_edu_essay.plugin_file_path: ''
+  shayer_edu_essay.plugin_dir_path: ''
+  shayer_edu_essay.plugin_url: ''
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  register_enqueue_scripts_main:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Common\Enqueues\EnqueueScriptRegistrar
+    arguments:
+      $handle: 'sha-essay-main-script'
+      $src: '%shayer_edu_essay.plugin_url%/build/js/main.js'
+      $version: '1.0'
+      $args: true
+
+  register_enqueue_style_main:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Common\Enqueues\EnqueueStyleRegistrar
+    arguments:
+      $handle: 'sha-essay-main-style'
+      $src: '%shayer_edu_essay.plugin_url%/build/css/main.css'
+      $version: '1.0'
+      $media: 'all'

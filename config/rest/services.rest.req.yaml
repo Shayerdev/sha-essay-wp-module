@@ -1,0 +1,83 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  rest_min_count_symbols_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinCountSymbolsOptionReq
+    arguments:
+      $minCountSymbolsService: '@service_min_count_symbols'
+
+  rest_min_count_page_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinCountPageOptionReq
+    arguments:
+      $minCountPageService: '@service_min_count_page'
+
+  rest_min_price_symbols_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinPriceSymbolsOptionsReq
+    arguments:
+      $minPriceSymbolsService: '@service_min_price_symbols'
+
+  rest_min_price_page_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinPricePageOptionsReq
+    arguments:
+      $minPricePageService: '@service_min_price_page'
+
+  rest_min_count_days_deadline_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\MinCountDaysDeadlineOptionReq
+    arguments:
+      $countDaysDeadline: '@service_min_count_days_deadline'
+
+  rest_single_spaced_coefficient_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\SingleSpacedCoefficientReq
+    arguments:
+      $singleSpacedCoefficient: '@service_single_spaced_coefficient'
+
+  variation_deadline_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\CalcOption\VariationDeadlineReq
+    arguments:
+      $variationDeadlineService: '@variation_deadline_service'
+
+  product_type_create_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\ProductType\ProductTypeCreateReq
+    arguments:
+      $productTypeService: '@product_type_service'
+
+  product_type_get_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\ProductType\ProductTypeGetReq
+    arguments:
+      $productTypeService: '@product_type_service'
+
+  product_category_create_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Category\ProductCategoryCreateReq
+    arguments:
+      $productCategoryService: '@product_category_service'
+
+  product_category_get_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Category\ProductCategoryGetReq
+    arguments:
+      $productCategoryService: '@product_category_service'
+
+  product_create_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Product\ProductCreateReq
+    arguments:
+      $productService: '@product_service'
+
+  product_get_request:
+    autowire: true
+    class: Shayer\EduEssayPlugin\Controller\Rest\Product\ProductGetReq
+    arguments:
+      $productService: '@product_service'

@@ -1,0 +1,59 @@
+parameters:
+  shayer_edu_essay.plugin_file_path: ''
+  shayer_edu_essay.plugin_dir_path: ''
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Shayer\EduEssayPlugin\Controller\Admin\Page\GlobalOptions: ~
+  Shayer\EduEssayPlugin\Controller\Admin\Page\ProductType: ~
+  Shayer\EduEssayPlugin\Controller\Admin\Page\ProductCategory: ~
+  Shayer\EduEssayPlugin\Controller\Admin\Page\Products: ~
+
+  Shayer\EduEssayPlugin\Common\Registrar\PageAdminRegistrar:
+    autowire: true
+    arguments:
+      $pages:
+        global_options:
+          pageTitle: 'Global Options'
+          menuTitle: 'Essay Options'
+          manageOptions: 'manage_options'
+          slug: 'essay-general'
+          callback: '@Shayer\EduEssayPlugin\Controller\Admin\Page\GlobalOptions'
+          icon: ''
+          position: 10
+
+  Shayer\EduEssayPlugin\Common\Registrar\SubpageAdminRegistrar:
+    autowire: true
+    arguments:
+      $pages:
+        products:
+          parentSlug: 'essay-general'
+          pageTitle: 'Products'
+          menuTitle: 'Products'
+          manageOptions: 'manage_options'
+          slug: 'essay-products'
+          callback: '@Shayer\EduEssayPlugin\Controller\Admin\Page\Products'
+          icon: ''
+          position: 10
+        product_category:
+          parentSlug: 'essay-general'
+          pageTitle: 'Product Category'
+          menuTitle: 'Product Category'
+          manageOptions: 'manage_options'
+          slug: 'essay-products-category'
+          callback: '@Shayer\EduEssayPlugin\Controller\Admin\Page\ProductCategory'
+          icon: ''
+          position: 10
+        product_type:
+          parentSlug: 'essay-general'
+          pageTitle: 'Products Type'
+          menuTitle: 'Products Type'
+          manageOptions: 'manage_options'
+          slug: 'essay-products-type'
+          callback: '@Shayer\EduEssayPlugin\Controller\Admin\Page\ProductType'
+          icon: ''
+          position: 10
