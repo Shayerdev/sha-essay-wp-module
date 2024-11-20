@@ -1,0 +1,20 @@
+{
+  "name": "shayer_edu_essay",
+  "version": "1.0.0",
+  "description": "Shayer Edu Essay scripts",
+  "scripts": {
+    "build": "wp-scripts build",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start"
+  },
+  "devDependencies": {
+    "@wordpress/blocks": "^12.2.0",
+    "@wordpress/scripts": "^28.3.0",
+    "path": "^0.12.7",
+    "webpack-remove-empty-scripts": "^1.0.4"
+  },
+  "author": "Shayer plugin development"
+}
